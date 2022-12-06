@@ -16,6 +16,9 @@ export class JSONFormatter extends Formatter {
     }
 
     format(data: string | Buffer): string {
+        if (typeof data === "string") {
+            return data;
+        }
         return JSON.stringify(data, null, this.indentSpace);
     }
 }

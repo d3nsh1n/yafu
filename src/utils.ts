@@ -11,7 +11,7 @@ export function unboundLog(logFunc: (...arg: any[]) => void, show: boolean, cont
     }
 }
 
-const __CONTEXT__ = "FileManager";
+const __CONTEXT__ = "YAFU";
 const LOG = true;
 export const log = (...data: any) => unboundLog(console.log, LOG, __CONTEXT__, "#ffd767", ...data);
 export const warn = (...data: any) => unboundLog(console.warn, LOG, __CONTEXT__, "#ffd767", ...data);

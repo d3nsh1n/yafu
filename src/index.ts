@@ -15,7 +15,7 @@ export class File<T = string> {
 
     constructor(private file: PathLike, opts?: FileManagerOptions<T>) {
         const { defaultContent, assertFn, format } = opts || {};
-        this._formatter = File.FormatterMap[format || "json"];
+        this._formatter = File.FormatterMap[format || File.InferFormat(file.toString())];
 
         // Create file if it doesn't exist
         if (!fs.existsSync(file)) {
@@ -66,4 +66,14 @@ export class File<T = string> {
         yaml: new YAMLFormatter(),
         raw: new RawFormatter(),
     };
+
+    private static InferFormat(filename: string): Format {
+        const extension = filename.split(".").pop() as Format;
+
+        if (extension === "json" || extension === "yaml") {
+            return extension;
+        } else {
+            return "raw";
+        }
+    }
 }

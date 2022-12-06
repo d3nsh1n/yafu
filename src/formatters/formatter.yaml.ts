@@ -16,7 +16,10 @@ export class YAMLFormatter extends Formatter {
         }
     }
 
-    format(data: string | Buffer): string {
+    format(data: any): string {
+        if (typeof data === "string") {
+            return data;
+        }
         return yaml.stringify(data);
     }
 }
