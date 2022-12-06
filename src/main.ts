@@ -1,2 +1,2 @@
-import { File } from "./file_manager";
-import { log } from "./utils";
+import "./file_manager";
+import "./utils";
